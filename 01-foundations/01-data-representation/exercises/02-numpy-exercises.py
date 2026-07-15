@@ -21,21 +21,18 @@ print("Shape:", scalar.shape)
 print("Data type:", scalar.dtype)
 
 print("\nVector")
-# Complete this section
 print("Value:", vector)
 print("Dimensions:", vector.ndim)
 print("Shape:", vector.shape)
 print("Data type:", vector.dtype)
 
 print("\nMatrix")
-# Complete this section
 print("Value:", matrix)
 print("Dimensions:", matrix.ndim)
 print("Shape:", matrix.shape)
 print("Data type:", matrix.dtype)
 
 print("\nTensor")
-# Complete this section
 print("Value:", tensor)
 print("Dimensions:", tensor.ndim)
 print("Shape:", tensor.shape)
