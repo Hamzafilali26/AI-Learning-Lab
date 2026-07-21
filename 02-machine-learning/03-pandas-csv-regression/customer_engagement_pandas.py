@@ -14,9 +14,11 @@ from sklearn.preprocessing import StandardScaler
 
 # Load the CSV file into a pandas DataFrame
 
-data = pd.read_csv(
-    "customer_engagement.csv"
-)
+from pathlib import Path
+
+csv_path = Path(__file__).parent / "customer_engagement.csv"
+
+data = pd.read_csv(csv_path)
 
 
 # Display the first rows of the dataset
