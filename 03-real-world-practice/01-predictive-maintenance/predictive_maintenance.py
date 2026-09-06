@@ -10,6 +10,13 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.dummy import DummyClassifier
 
+from sklearn.metrics import (
+    precision_score,
+    recall_score,
+    f1_score,
+    confusion_matrix,
+)
+
 try:
     path = Path(__file__).parent / "data/ai4i2020.csv"
     df = pd.read_csv(path)
@@ -202,8 +209,58 @@ print(test_accuracy)
 # * Real model
 # @  → must beat that baseline meaningfully
 
-# * This shows that the real model is only marginally better than the majority-class baseline when using accuracy alone. But, accuracy 
+# * This shows that the real model is only marginally better than the majority-class baseline when using accuracy alone. But, accuracy
 # *      is not sufficient to evaluate the model, and we need to inspect recall, precision, F1-score, and the confusion matrix.
+
+
+test_precision = precision_score(
+    y_test,
+    test_predictions,
+    zero_division=0,
+)
+
+test_recall = recall_score(
+    y_test,
+    test_predictions,
+    zero_division=0,
+)
+
+test_f1 = f1_score(
+    y_test,
+    test_predictions,
+    zero_division=0,
+)
+
+test_confusion_matrix = confusion_matrix(
+    y_test,
+    test_predictions,
+)
+
+
+print("Precision: ", end="")
+print(test_precision)
+
+print("Recall: ", end="")
+print(test_recall)
+
+print("F1: ", end="")
+print(test_f1)
+
+print("Confusion Matrix: ")
+print(test_confusion_matrix)
+
+
+# * Precision = 60%
+# * → predictions of failure are reasonably trustworthy
+
+# * Recall = 14.1%
+# * → model detects very few actual failures
+
+# * F1 = 22.9%
+# * → overall balance between precision and recall is poor
+# [[2407    8]
+#  [  73   12]]
+
 
 
 # TODO : # the columns that have the impact in the failer ??
